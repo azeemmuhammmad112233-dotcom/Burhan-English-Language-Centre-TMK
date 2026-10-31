@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burhan English — Home</title>
+  <link rel="stylesheet" href="Public/style.css" />
+  <style>
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer">
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="wm-stage">
+      <div class="wm-row wm-row-1"><span>BURHAN</span><span>BURHAN</span></div>
+      <div class="wm-row wm-row-2"><span>ENGLISH</span><span>ENGLISH</span></div>
+      <div class="wm-row wm-row-3"><span>LANGUAGE</span><span>LANGUAGE</span></div>
+      <div class="wm-row wm-row-4"><span>CENTRE</span><span>CENTRE</span></div>
+    </div>
+    <div class="light-beam beam-1"></div>
+    <div class="light-beam beam-2"></div>
+    <div class="spark"></div><div class="spark"></div><div class="spark"></div>
+    <div class="spark"></div><div class="spark"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-bar">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="burhan logo - Copy.jpeg" alt="Logo" width="40" height="40"></span>
+          <span>Burhan English Language Centre</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="about.html">About</a>
+          <a href="courses.html">Courses</a>
+          <a href="faculty.html">Faculty</a>
+          <a href="contact.html">Contact</a>
+          <a href="apply.html" class="is-cta">Apply Now</a>
+          <a href="login.html" style="background: var(--emerald-500); color: white; border-radius: 999px; padding: 0.6rem 1.2rem;">Portal Login</a>
+         
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-eyebrow">Welcome to Excellence</span>
+        <h1>Burhan English<br><span class="text-gradient">Language Centre</span></h1>
+        <p>A modern language centre built on proven teaching, personal attention, and a community that helps you speak with absolute fluency.</p>
+        <div style="margin-top: 3rem;">
+          <a href="apply.html" class="btn btn-shine">Start Your Journey →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="stat-box">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Students Taught</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Expert Teachers</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Courses Offered</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">98%</div>
+            <div class="stat-label">Satisfaction Rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Why Burhan</span>
+          <h2>An Unfair Advantage</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Small Classes</h3>
+            <p>Maximum 30 students per class ensures you get the personal attention and speaking time you deserve.</p>
+            <div class="card-wm">01</div>
+          </div>
+          <div class="card">
+            <h3>Expert Faculty</h3>
+            <p>Our teachers are Graduate (Intermediate, B.A, M.A English) with years of real classroom experience.</p>
+            <div class="card-wm">02</div>
+          </div>
+          <div class="card">
+            <h3>Practical Focus</h3>
+            <p>We don't just teach grammar. We build real world confidence through active conversation and debate.</p>
+            <div class="card-wm">03</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Burhan English Language Centre. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  // Show Dashboard button if logged in
+  if (localStorage.getItem('userRole')) {
+    document.getElementById('navDashboard').style.display = 'block';
+    document.getElementById('navDashboard').style.background = 'var(--emerald-500)';
+    document.getElementById('navDashboard').style.color = 'white';
+  }
+</script>
+</body>
+</html>

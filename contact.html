@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Burhan English</title>
+  <link rel="stylesheet" href="public/style.css" />
+  <style>
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
+    @media(max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-info h3 { font-size: 1.8rem; color: var(--white); margin-bottom: 1rem; }
+    .contact-info p { color: var(--text-muted); line-height: 1.8; font-size: 1.05rem; margin-bottom: 2rem; }
+    .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--white); }
+    .contact-icon { width: 40px; height: 40px; border-radius: 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); display: grid; place-items: center; font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer">
+    <div class="bg-grid"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="wm-stage">
+      <div class="wm-row wm-row-1"><span>CONTACT</span><span>CONTACT</span></div>
+      <div class="wm-row wm-row-4"><span>GET IN TOUCH</span><span>GET IN TOUCH</span></div>
+    </div>
+    <div class="light-beam beam-2"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-bar">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="burhan logo - Copy.jpeg" alt="Logo" width="40" height="40"></span>
+          <span>Burhan English Language Centre</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="courses.html">Courses</a>
+          <a href="faculty.html">Faculty</a>
+          <a href="contact.html" class="active">Contact</a>
+          <a href="apply.html" class="is-cta">Apply Now</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-eyebrow">Get in Touch</span>
+        <h1>We'd love to <span class="text-gradient">hear from you</span></h1>
+        <p>Questions about courses, batches, or fees? Send us a message and we'll get back to you within one working day.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <div class="contact-info">
+            <h3>Visit or call us</h3>
+            <p>Our admissions team is available Monday to Saturday, from 9:00 AM to 8:00 PM.</p>
+            
+            <div class="contact-detail">
+              <div class="contact-icon">📍</div>
+              <div>24 Learning Avenue, Knowledge District</div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-icon">📞</div>
+              <div>+92 000 000 0000</div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-icon">✉️</div>
+              <div>info@burhanenglish.example</div>
+            </div>
+          </div>
+
+          <div class="form-card" style="margin: 0; width: 100%; max-width: 100%;">
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Name *</label>
+                  <input type="text" id="cName" required placeholder="Your name" />
+                </div>
+                <div class="form-group">
+                  <label>Email *</label>
+                  <input type="email" id="cEmail" required placeholder="you@example.com" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Subject *</label>
+                <input type="text" id="cSubject" required placeholder="How can we help?" />
+              </div>
+              <div class="form-group">
+                <label>Message *</label>
+                <textarea id="cMessage" required rows="4" placeholder="Your message here..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-shine" style="width: 100%;" id="contactBtn">Send Message</button>
+              <div id="contactMsg" style="margin-top: 1rem; text-align: center; font-weight: 600; display: none;"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Burhan English Language Centre.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('contactBtn');
+      const msg = document.getElementById('contactMsg');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+
+      const payload = {
+        name: document.getElementById('cName').value,
+        email: document.getElementById('cEmail').value,
+        subject: document.getElementById('cSubject').value,
+        message: document.getElementById('cMessage').value
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if(res.ok) {
+          msg.style.display = 'block';
+          msg.style.color = 'var(--emerald-400)';
+          msg.textContent = 'Message sent successfully!';
+          document.getElementById('contactForm').reset();
+        } else throw new Error();
+      } catch (err) {
+        msg.style.display = 'block';
+        msg.style.color = '#ff6b6b';
+        msg.textContent = 'Failed to send. Please ensure server is running.';
+      } finally {
+        btn.textContent = 'Send Message'; btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

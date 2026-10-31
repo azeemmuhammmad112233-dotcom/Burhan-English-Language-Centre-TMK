@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faculty — Burhan English</title>
+  <link rel="stylesheet" href="public/style.css" />
+  <style>
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+    .faculty-img {
+      width: 100px; height: 100px; border-radius: 50%; background: var(--glass-bg);
+      border: 2px solid var(--glass-border); display: grid; place-items: center;
+      font-size: 2.5rem; margin-bottom: 1.5rem; transition: 0.5s; overflow: hidden;
+    }
+    .faculty-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .card:hover .faculty-img { border-color: var(--emerald-400); transform: scale(1.05); box-shadow: 0 0 30px rgba(34, 168, 119, 0.3); }
+    .faculty-role { color: var(--emerald-300); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .faculty-qual { color: var(--text-muted); font-size: 0.9rem; margin-top: auto; }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer">
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-3"></div>
+    <div class="wm-stage">
+      <div class="wm-row wm-row-1"><span>FACULTY</span><span>FACULTY</span></div>
+      <div class="wm-row wm-row-2"><span>TEACHERS</span><span>TEACHERS</span></div>
+    </div>
+    <div class="light-beam beam-2"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-bar">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="burhan logo - Copy.jpeg" alt="Logo" width="40" height="40"></span>
+          <span>Burhan English Language Centre</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="courses.html">Courses</a>
+          <a href="faculty.html" class="active">Faculty</a>
+          <a href="contact.html">Contact</a>
+          <a href="apply.html" class="is-cta">Apply Now</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-eyebrow">Our Team</span>
+        <h1>Learn from the <span class="text-gradient">best</span></h1>
+        <p>Qualified, experienced, and genuinely invested in every student's success. Meet the people behind the classes.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-3">
+          
+          <div class="card" style="align-items:center; text-align:center;">
+            <div class="faculty-img"><img src="teacher - Copy.png" alt="Sir Ab: Hameed Khtti" width="100" height="100"></div>
+            <h3>Sir Abdul Hameed Khatti</h3>
+            <div class="faculty-role">Head of Department</div>
+            <p class="faculty-qual">MA English</p>
+            <div class="card-wm">AK</div>
+          </div>
+
+          <div class="card" style="align-items:center; text-align:center;">
+            <div class="faculty-img">👨‍🏫</div>
+            <h3>Sir Huzaifa Bhatti</h3>
+            <div class="faculty-role">Accountant & Assistent</div>
+            <p class="faculty-qual"></p>
+            <div class="card-wm"></div>
+          </div>
+
+          <div class="card" style="align-items:center; text-align:center;">
+            <div class="faculty-img">👩‍🎓</div>
+            <h3>Miss Hina</h3>
+            <div class="faculty-role">Teaching on Basic </div>
+            <p class="faculty-qual">B A C</p>
+            <div class="card-wm">SA</div>
+          </div>
+
+          <div class="card" style="align-items:center; text-align:center;">
+            <div class="faculty-img">👨‍🎓</div>
+            <h3>Sir Shahbaz Jarwar</h3>
+            <div class="faculty-role">Grammar Teacher</div>
+            <p class="faculty-qual">Intermediate</p>
+            <div class="card-wm">OS</div>
+          </div>
+          
+          <div class="card" style="align-items:center; text-align:center;">
+            <div class="faculty-img"><img src="profile for laptop.jpeg" alt="Sir m.Azeem" width="100" height="100"></div>
+            <h3>Sir Muhammad Azeem Khatri</h3> 
+            <div class="faculty-role">Grammar Teacher & Incharge</div>
+            <p class="faculty-qual">Intermediate</p>
+            <div class="card-wm">OS</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Burhan English Language Centre.</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

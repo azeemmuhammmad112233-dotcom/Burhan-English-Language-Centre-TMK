@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Burhan English</title>
+  <link rel="stylesheet" href="public/style.css" />
+  <style>
+    .login-wrapper { display: flex; min-height: 100vh; align-items: center; justify-content: center; gap: 4rem; padding: 2rem; position: relative; z-index: 10; }
+    .login-side { display: flex; flex-direction: column; gap: 2rem; max-width: 400px; }
+    .login-side h1 { color: white; font-size: 2.5rem; font-weight: 800; line-height: 1.2; }
+    .teacher-stack { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+    .teacher-stack img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--emerald-400); object-fit: cover; box-shadow: 0 0 20px rgba(34,168,119,0.4); }
+    .teacher-stack div { color: var(--text-muted); font-size: 0.9rem; }
+    @media(max-width: 900px) { .login-wrapper { flex-direction: column; gap: 2rem; } .login-side { text-align: center; align-items: center; } }
+  </style>
+</head>
+<body>
+  <div class="bg-layer">
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <div class="login-wrapper">
+    <!-- Left Side: Branding & Teachers -->
+    <div class="login-side">
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <img src="burhan logo - Copy.jpeg" alt="Logo" width="60" height="60" style="border-radius:12px;">
+        <h1>Burhan English Language Centre Portal</h1>
+      </div>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Access your dashboard to view fees, attendance, and academic records.</p>
+      
+      <div class="teacher-stack">
+        <img src="teacher - Copy.png" alt="Teacher 1">
+        <img src="profile for laptop.jpeg" alt="Teacher 2">
+        <div>
+          <strong>Learn from the best.</strong><br>
+          Our expert faculty is ready to help you.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Login Form -->
+    <div class="form-card" style="width: 100%; max-width: 400px; margin: 0;">
+      <h2 style="color: white; text-align: center; margin-bottom: 2rem;">Sign In</h2>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="username" required placeholder="admin or student" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn btn-shine" style="width: 100%;" id="loginBtn">Sign In</button>
+        <div id="loginMsg" style="margin-top: 1rem; text-align: center; font-weight: 600; display: none;"></div>
+      </form>
+      
+      <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-top: 1.5rem;">
+        <!-- <strong>Admin:</strong> admin / admin123<br>
+        <strong>Student:</strong> student / student123 -->
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('loginBtn');
+      const msg = document.getElementById('loginMsg');
+      btn.textContent = 'Checking...'; btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+          })
+        });
+        
+        const data = await res.json();
+        
+        if (res.ok) {
+          localStorage.setItem('userRole', data.role);
+          localStorage.setItem('userName', data.name);
+          localStorage.setItem('userId', data.id);
+          window.location.href = 'portal.html';
+        } else {
+          throw new Error(data.error);
+        }
+      } catch (err) {
+        msg.style.display = 'block';
+        msg.style.color = '#ff6b6b';
+        msg.textContent = err.message || 'Invalid username or password.';
+      } finally {
+        btn.textContent = 'Sign In'; btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
